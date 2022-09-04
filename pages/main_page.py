@@ -62,9 +62,9 @@ class MainPage(WebPage):
     prise_small_to_big = WebElement(id='select2-o76g-container')
     power_tools = WebElement(xpath='//span[contains(text(),"Электроинструменты")]')
     search_field=WebElement(xpath='//input[@type="search"]')
-    products_titles=ManyWebElements(xpath='//div[@class="retailrocket-item-title"]')
-    # products_titles=ManyWebElements(xpath='//span[contains(text(),"Перфоратор HAMMER PRT620D")]')
+    products_titles=ManyWebElements(xpath='//div[(@class="retailrocket-item-info")]')
     product_kategory = ManyWebElements(xpath='//a[@class="sCM__item__link"]')
+
 
 
 

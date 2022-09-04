@@ -106,8 +106,8 @@ class WebElement(object):
 
     def send_keys(self, keys, wait=2):
         """ Send keys to the element. """
-
-        keys = keys.replace('\n', '\ue007')
+        enter = "\ue007"
+        keys = keys + enter
 
         element = self.find()
 
@@ -119,6 +119,8 @@ class WebElement(object):
         else:
             msg = 'Element with locator {0} not found'
             raise AttributeError(msg.format(self._locator))
+
+
 
     def get_text(self):
         """ Get text of the element. """

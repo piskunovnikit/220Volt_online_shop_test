@@ -9,25 +9,25 @@ from tests.data import correct_email,correct_pass,incorrect_email,incorrect_pass
 
 
 
-# def test_authorisation_with_correct_data(web_browser):
-#     """при вводе в поля формы авторизации корректных данных действующего пользователя происходит вход в аккаунт"""
-#     page = AuthPage(web_browser)
-#     page.email_field.send_keys(correct_email)
-#     page.pass_field.send_keys(correct_pass)
-#     page.login_button.click()
-#     time.sleep(1)
-#     assert page.get_relative_link() == '/catalog/','При вводе в поля формы авторизации корректных данных действующего пользователя не происходит вход в аккаунт'
+def test_authorisation_with_correct_data(web_browser):
+    """при вводе в поля формы авторизации корректных данных действующего пользователя происходит вход в аккаунт"""
+    page = AuthPage(web_browser)
+    page.email_field.send_keys(correct_email)
+    page.pass_field.send_keys(correct_pass)
+    page.login_button.click()
+    time.sleep(1)
+    assert page.get_relative_link() == '/catalog/','При вводе в поля формы авторизации корректных данных действующего пользователя не происходит вход в аккаунт'
 
-# @pytest.mark.parametrize("email",list(incorrect_email.keys())[:],
-#                          ids=list(incorrect_email.values())[:])
-# def test_auth_with_empty_email(web_browser,email):
-#     """при вводе в поле для email возможные неверные варианты значений сообщение об с сообщением об ошибке"""
-#     page = AuthPage(web_browser)
-#     page.email_field.send_keys(email)
-#     page.pass_field.send_keys(correct_pass)
-#     page.login_button.click()
-#     # time.sleep(1) Пароль: Это поле не может быть пустым.
-#     assert page.incorrect_email_message.is_visible() ,"сообщение об ошибке не появилось,вход успешный"
+@pytest.mark.parametrize("email",list(incorrect_email.keys())[:],
+                         ids=list(incorrect_email.values())[:])
+def test_auth_with_empty_email(web_browser,email):
+    """при вводе в поле для email возможные неверные варианты значений сообщение об с сообщением об ошибке"""
+    page = AuthPage(web_browser)
+    page.email_field.send_keys(email)
+    page.pass_field.send_keys(correct_pass)
+    page.login_button.click()
+    # time.sleep(1) Пароль: Это поле не может быть пустым.
+    assert page.incorrect_email_message.is_visible() ,"сообщение об ошибке не появилось,вход успешный"
 
 
 
